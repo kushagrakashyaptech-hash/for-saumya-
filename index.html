@@ -6,24 +6,23 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ffd6e8, #fff1f7);
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      background: linear-gradient(135deg, #ffd6e8, #fff1f7);
+      font-family: 'Poppins', sans-serif;
       overflow: hidden;
     }
 
     .card {
       background: white;
-      padding: 40px;
+      padding: 30px;
       border-radius: 25px;
       text-align: center;
-      max-width: 350px;
+      width: 320px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      animation: fadeIn 1.5s ease;
+      animation: fadeIn 1.2s ease;
     }
 
     h1 {
@@ -33,61 +32,76 @@
 
     p {
       color: #444;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 22px;
       font-size: 16px;
-      line-height: 1.6;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .heart {
-      font-size: 40px;
-      animation: beat 1s infinite;
+    .yes {
+      background: #ff4d88;
+      color: white;
+    }
+
+    .no {
+      background: #ddd;
+      position: relative;
+    }
+
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
       color: #ff4d88;
-    }
-
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    .floating-hearts span {
-      position: absolute;
-      bottom: -50px;
-      font-size: 20px;
-      animation: floatUp 6s linear infinite;
-      color: #ff6fa5;
-    }
-
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-110vh); opacity: 0; }
-    }
   </style>
 </head>
 <body>
 
   <div class="card">
-    <div class="heart">❤️</div>
-    <h1>For Saumya</h1>
-    <p>
-      Hey Saumya,<br><br>
-      I just wanted you to know how special you are to me.
-      You make my days brighter, my smile bigger,
-      and my heart happier.<br><br>
-      I’m really lucky to have you ❤️
-    </p>
+    <h1>Saumya ❤️</h1>
+    <p>Do you love me?</p>
+
+    <div class="buttons">
+      <button class="yes" onclick="showLove()">Yes</button>
+      <button class="no" onmouseover="moveButton()">No</button>
+    </div>
+
+    <div class="message" id="loveMessage">
+      I knew it 😌💖<br>
+      I love you so much ❤️
+    </div>
   </div>
 
-  <div class="floating-hearts">
-    <span style="left:10%">💖</span>
-    <span style="left:30%; animation-delay:1s">💗</span>
-    <span style="left:50%; animation-delay:2s">💕</span>
-    <span style="left:70%; animation-delay:3s">💘</span>
-    <span style="left:90%; animation-delay:4s">❤️</span>
-  </div>
+  <script>
+    function moveButton() {
+      const btn = document.querySelector('.no');
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function showLove() {
+      document.getElementById('loveMessage').style.display = 'block';
+    }
+  </script>
 
 </body>
 </html>
